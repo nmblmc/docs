@@ -1,0 +1,16 @@
+# 🛠 Modifications
+Nimble is very strict on ensuring that our server software has 100% parity with Mojang's intended game behavior and mechanics. However, Mojang's `server.jar`, the vanilla server, has notorious performance issues which make servers using the software struggle trying to handle a decent amount of players.
+
+Nimble does not run Mojang's standard server software. Instead, we have opted to use the [Fabric modding platform](https://fabricmc.net) with a small handful of performance mods to enhance the performance of our server. However, we ensure that every mod we install does not change vanilla behavior *in any way* and make sure we have a *clear purpose* for each and every mod we install.
+
+Below you will find a list of mods that we have currently installed, along with the reason we have chosen to install the specific mod. Once again, we *ensure* that all mechanics work just the same as vanilla.
+
+## List of installed mods
+* **[Fabric API](https://github.com/FabricMC/fabric)**: This is a core Fabric mod toolchain API which is required for spark to run. This does not have any behavior outside of being an API for other mods.
+* **[Fast Furnace](https://github.com/Shadows-of-Fire/FastFurnace)**: In vanilla, furnace burn time calculation is recaculated every tick for every burning furnace. This scales up heavily with large furnace arrays, such as super smelters. To ensure people can make large smelters freely without major performance side effects, we opted to install this mod.
+* **[Lithium](https://github.com/CaffeineMC/lithium-fabric)**: This is our most important mod performance-wise. Lithium features an absolute ton of optimizations to the game's logic, hitting things like game physics, mob AI, block ticking, etc. Lithium's optimizations do not sacrifice behavior for performance, meaning vanilla behavior will not be affected because of Lithium's optimizations. With this mod, we are able to lower tick rates by ~45% compared to Mojang's vanilla server software.
+* **[MiniMOTD](https://github.com/jpenilla/MiniMOTD)**: While not exactly *necessary,* this plugin allows us to easily change our message of the day on the multiplayer server list and use RGB color codes for formatting. This is a purely cosmetic plugin and serves no purpose other than to help solidify our branding outside of the game.
+* **[Spark](https://github.com/lucko/spark)**: This is solely an admin tool that allows us to take performance samples and view the current TPS (ticks per second) and tick rates. This is not accessible to normal players and is only installed to help system administrators ensure that the server is running smoothly.
+* **[Starlight](https://github.com/Spottedleaf/Starlight)**: This mod completely rewrites the Minecraft lighting engine to bring upwards of a 35x performance improvement to lighting chunks. This mod mostly helps speed up new chunk generation and helps us avoid having to set a world border.
+
+For exact mod version numbers and built JARs, please check our server repository's [mods folder](https://github.com/nmblmc/server/tree/main/mods).
